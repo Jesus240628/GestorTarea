@@ -4,7 +4,10 @@
  */
 package mx.itson.edu.gestortarea.principal;
 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import mx.itson.edu.gestiontarea.entidades.Tarea;
+import mx.itson.edu.gestortarea.persistencias.TareaDAO;
 
 /**
  *
@@ -37,22 +40,22 @@ public class TareaTabla extends javax.swing.JFrame {
 
         tblGestor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Tarea", "Estado"
+                "id", "Tarea", "Estado", "Incompleta"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                true, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -119,8 +122,23 @@ public class TareaTabla extends javax.swing.JFrame {
         tabla.setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
 
-           // DefaultTableModel model = (DefaultTableModel) tblGestor.getModel();
-           // model.addRow
+    public void cargar() {
+        Tarea estado = new Tarea();
+
+        List<Tarea> movimiento = TareaDAO.obtenerTodos();
+        DefaultTableModel model = (DefaultTableModel) tblGestor.getModel();
+        model.setRowCount(0);
+        for (Tarea m : movimiento) {
+            model.addRow(new Object[]{
+                m.getId(),
+                m.getTarea(),
+                m.getCompletada(),
+                m.getIncompleta()
+            });
+        }
+        // DefaultTableModel model = (DefaultTableModel) tblGestor.getModel();
+        // model.addRow
+    }
 
     /**
      * @param args the command line arguments
