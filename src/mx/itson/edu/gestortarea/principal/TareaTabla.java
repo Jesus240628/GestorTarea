@@ -130,10 +130,17 @@ public class TareaTabla extends javax.swing.JFrame {
         model.setRowCount(0);
         for (Tarea m : movimiento) {
             model.addRow(new Object[]{
+              if(m.estado == Estado.COMPLETADA) {
                 m.getId(),
                 m.getTarea(),
-                m.getCompletada(),
-                m.getIncompleta()
+                "x",
+                " ",
+              } else {
+                m.getId(),
+                m.getTarea(),
+                " ",
+                "x"
+                }
             });
         }
         // DefaultTableModel model = (DefaultTableModel) tblGestor.getModel();
