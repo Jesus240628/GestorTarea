@@ -132,8 +132,7 @@ public class TareaTabla extends javax.swing.JFrame {
             model.addRow(new Object[]{
                 m.getId(),
                 m.getTarea(),
-                m.getCompletada(),
-                m.getIncompleta()
+                m.getEstado()
             });
         }
         // DefaultTableModel model = (DefaultTableModel) tblGestor.getModel();

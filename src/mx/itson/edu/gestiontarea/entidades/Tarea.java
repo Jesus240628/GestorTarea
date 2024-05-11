@@ -12,9 +12,8 @@ public class Tarea {
     
     private int id;
     private String tarea;
-    private int completada;
-    private int incompleta;
-
+    private String descripcion;
+    private Enum estado;
     /**
      * @return the id
      */
@@ -41,36 +40,34 @@ public class Tarea {
      */
     public void setTarea(String tarea) {
         this.tarea = tarea;
+    }    
+
+    /**
+     * @return the estado
+     */
+    public Enum getEstado() {
+        return estado;
     }
 
     /**
-     * @return the completada
+     * @param estado the estado to set
      */
-    public int getCompletada() {
-        return completada;
+    public void setEstado(Enum estado) {
+        this.estado = estado;
     }
 
     /**
-     * @param completada the completada to set
+     * @return the descripcion
      */
-    public void setCompletada(int completada) {
-        this.completada = completada;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     /**
-     * @return the incompleta
+     * @param descripcion the descripcion to set
      */
-    public int getIncompleta() {
-        return incompleta;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-
-    /**
-     * @param incompleta the incompleta to set
-     */
-    public void setIncompleta(int incompleta) {
-        this.incompleta = incompleta;
-    }
-    
-    
     
 }

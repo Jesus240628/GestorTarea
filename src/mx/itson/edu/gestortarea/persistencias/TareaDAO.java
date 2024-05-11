@@ -23,7 +23,7 @@ public class TareaDAO {
      * @return la lista de periodos de pago generada
      */
        public static List<Tarea> obtenerTodos(){
-       List<Tarea> periodos = new ArrayList<>();
+       List<Tarea> tareas = new ArrayList<>();
        try{
            Connection conexion = Conexion.obtener();
            Statement statement = conexion.createStatement();
@@ -32,15 +32,14 @@ public class TareaDAO {
                Tarea t = new Tarea();
                t.setId(rs.getInt(1));
                t.setTarea(rs.getString(2));
-               t.setCompletada(0);
-               t.setIncompleta(0);
+               t.getEstado();
  
-               periodos.add(t);
+               tareas.add(t);
            }
        } catch(SQLException ex){
           System.err.print("Ocurrio un error al obtener usuario: " + ex.getMessage()); 
        }
-       return periodos;
+       return tareas;
     }    
     
 }
